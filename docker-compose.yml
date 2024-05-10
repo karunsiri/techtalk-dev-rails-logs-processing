@@ -1,0 +1,17 @@
+services:
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - ./grafana_datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+    ports:
+      - "5000:3000"
+  loki:
+    image: grafana/loki
+    command: -config.file="/etc/loki/loki.yml"
+    volumes:
+      - "./loki_config.yml:/etc/loki/loki.yml"
+  promtail:
+    image: grafana/promtail
+    volumes:
+      - "./promtail_config.yml:/etc/promtail/config.yml"
+      - "${PWD}/log:/rails/log"
