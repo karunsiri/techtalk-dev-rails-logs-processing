@@ -4,7 +4,7 @@ services:
     volumes:
       - ./grafana_datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
     ports:
-      - "5000:3000"
+      - "4000:3000"
   loki:
     image: grafana/loki
     command: -config.file="/etc/loki/loki.yml"
